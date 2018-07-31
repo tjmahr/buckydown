@@ -24,6 +24,7 @@ thesis_pdf <- function(
   toc = TRUE, toc_depth = 3, toc_bib = TRUE, toc_appendix = TRUE,
   dev = "cairo_pdf",
   highlight = "default",
+  latex_engine = "xelatex",
   pandoc_args = NULL,
   ...){
 
@@ -36,6 +37,7 @@ thesis_pdf <- function(
     dev = dev,
     highlight = highlight,
     keep_tex = TRUE,
+    latex_engine = latex_engine,
     pandoc_args = c(
       pandoc_args,
       "--top-level-division=chapter"),

@@ -7,6 +7,11 @@ MathJax.Hub.Config({
 });
 </script>
 
+## IPA text.
+
+The word *dog* is transcribed /dɔg/. Oops, I am going to use `{\unicodefont ...}` to try that in a different font: \unicodefont /dɔg/\normalfont. And now we are back to normal: /dɔg/.
+
+
 ## Math
 
 \TeX\ is the best way to typeset mathematics. Donald Knuth designed \TeX\ when 
