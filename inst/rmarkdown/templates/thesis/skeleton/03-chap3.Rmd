@@ -1,20 +1,4 @@
-```{r include_packages_2, include = FALSE}
-# This chunk ensures that the huskydown package is
-# installed and loaded. This huskydown package includes
-# the template files for the thesis and also two functions
-# used for labeling and referencing
-if(!require(devtools))
-  install.packages("devtools", repos = "http://cran.rstudio.com")
-if(!require(dplyr))
-    install.packages("dplyr", repos = "http://cran.rstudio.com")
-if(!require(ggplot2))
-    install.packages("ggplot2", repos = "http://cran.rstudio.com")
-if(!require(ggplot2))
-    install.packages("bookdown", repos = "http://cran.rstudio.com")
-if(!require(huskydown)){
-  library(devtools)
-  devtools::install_github("benmarwick/huskydown")
-  }
+```{r, include = FALSE}
 flights <- read.csv("data/flights.csv")
 ```
 
