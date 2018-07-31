@@ -4,7 +4,7 @@
 #'
 #' @export
 #' @param template Path of the Pandoc LaTeX template file. Defaults to
-#'   \code{"template.tex"}.
+#'   `"template.tex"`.
 #' @param toc A Boolean specifying whether table of contents should be created
 #' @param toc_depth A positive integer
 #' @param toc_bib Whether to add bibliography to table of contents
@@ -14,7 +14,7 @@
 #'   "default", "tango", "pygments", "kate", "monochrome", "espresso",
 #'   "zenburn", and "haddock". Pass NULL to prevent syntax highlighting.
 #' @param pandoc_args optional values for the pandoc_args argument of
-#'   bookdown::pdf_book. The argument \code{"--top-level-division=chapter"} is
+#'   bookdown::pdf_book. The argument `"--top-level-division=chapter"` is
 #'   always included in the pandoc_args.
 #' @param ... other arguments to `bookdown::pdf_book()`
 #' @return A pdf document
@@ -24,17 +24,9 @@ thesis_pdf <- function(
   toc = TRUE, toc_depth = 3, toc_bib = TRUE, toc_appendix = TRUE,
   dev = "cairo_pdf",
   highlight = "default",
-  pandoc_args = NULL, ...){
-  # output:
-  #   bookdown::pdf_book:
-  #     # latex_engine: xelatex
-  #     pandoc_args: [
-  #       "--latex-engine", "xelatex"
-  #     ]
-  #     dev: cairo_pdf
-  #     toc_appendix: true
-  #     toc_bib: true
-  #     template: test-template2.tex
+  pandoc_args = NULL,
+  ...){
+
   base <- bookdown::pdf_book(
     template = template,
     toc = toc,
@@ -44,7 +36,9 @@ thesis_pdf <- function(
     dev = dev,
     highlight = highlight,
     keep_tex = TRUE,
-    pandoc_args = c(pandoc_args, "--top-level-division=chapter"),
+    pandoc_args = c(
+      pandoc_args,
+      "--top-level-division=chapter"),
     ...)
 
   # Mostly copied from knitr::render_sweave
@@ -58,8 +52,8 @@ thesis_pdf <- function(
 }
 
 fix_envs = function(x){
-  beg_reg <- '^\\s*\\\\begin\\{.*\\}'
-  end_reg <- '^\\s*\\\\end\\{.*\\}'
+  beg_reg <- "^\\s*\\\\begin\\{.*\\}"
+  end_reg <- "^\\s*\\\\end\\{.*\\}"
   i3 = if (length(i1 <- grep(beg_reg, x))) (i1 - 1)[grepl("^\\s*$", x[i1 - 1])]
 
   i3 = c(i3,
@@ -71,19 +65,36 @@ fix_envs = function(x){
 
 #' @export
 test_thesis_pdf <- function(..., preview = FALSE) {
+  old_dir <- getwd()
+  on.exit(setwd(old_dir))
   dir <- tempdir()
+
   setwd(dir)
+
   rmarkdown::draft(
-    'index.Rmd', template = 'thesis', package = 'buckydown',
+    "index.Rmd", template = "thesis", package = "buckydown",
     create_dir = TRUE, edit = FALSE
   )
 
-  setwd('index')
+  setwd("index")
 
-  bookdown::render_book(
-    'index.Rmd',
+  result <- bookdown::render_book(
+    "index.Rmd",
     buckydown::thesis_pdf(...),
     preview = preview)
 
-  file.path(dir, "index")
+    system2("open", result)
+
+  list(dir = dir, book = result)
 }
+
+#' @export
+reinstall_thesis_template <- function(current) {
+  template <- system.file(
+    "rmarkdown/templates/thesis/skeleton/template.tex",
+    package = "buckydown",
+    mustWork = TRUE)
+  file.copy(template, current, overwrite = TRUE)
+}
+
+

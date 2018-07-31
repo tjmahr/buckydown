@@ -28,7 +28,7 @@ thesis_pdf(template = "template.tex", toc = TRUE, toc_depth = 3,
 bookdown::pdf_book. The argument \code{"--top-level-division=chapter"} is
 always included in the pandoc_args.}
 
-\item{...}{other arguments to `bookdown::pdf_book()`}
+\item{...}{other arguments to \code{bookdown::pdf_book()}}
 
 \item{toc_depth}{A positive integer}
 }

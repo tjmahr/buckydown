@@ -1,5 +1,5 @@
 ---
-title: "My thesis title - edit in index.Rmd"
+title: "My thesis title"
 author: "My Name"
 year: 2018
 output:
@@ -22,20 +22,7 @@ signature:
 abstract-school: "The University of Wisconsin--Madison"
 abstract-year: 2018
 abstract-advisor: "Professor Jan Edwards and Professor Susan Ellis Weismer"
-abstract: |
-  On the other hand, we denounce with righteous indignation and dislike men who
-  are so beguiled and demoralized by the charms of pleasure of the moment, so
-  blinded by desire, that they cannot foresee the pain and trouble that are bound
-  to ensue; and equal blame belongs to those who fail in their duty through
-  weakness of will, which is the same as saying through shrinking from toil and
-  pain. These cases are perfectly simple and easy to distinguish. In a free hour,
-  when our power of choice is untrammelled and when nothing prevents our being
-  able to do what we like best, every pleasure is to be welcomed and every pain
-  avoided. But in certain circumstances and owing to the claims of duty or the
-  obligations of business it will frequently occur that pleasures have to be
-  repudiated and annoyances accepted. The wise man therefore always holds in these
-  matters to this principle of selection: he rejects pleasures to secure other
-  greater pleasures, or else he endures pains to avoid worse pains.
+abstract: '`r readLines("abstract.md")`'
 dedication: |
   For my cats  
 acknowledgments: |
@@ -44,61 +31,16 @@ lof: true
 lot: true
 bibliography: assets/thesis.bib
 csl: assets/apa.csl
-references:
-- type: article-journal
-  id: WatsonCrick1953
-  author:
-  - family: Watson
-    given: J. D.
-  - family: Crick
-    given: F. H. C.
-  issued:
-    date-parts:
-    - - 1953
-      - 4
-      - 25
-  title: 'Molecular structure of nucleic acids: a structure for deoxyribose
-    nucleic acid'
-  title-short: Molecular structure of nucleic acids
-  container-title: Nature
-  volume: 171
-  issue: 4356
-  page: 737-738
-  DOI: 10.1038/171737a0
-  URL: http://www.nature.com/nature/journal/v171/n4356/abs/171737a0.html
-  language: en-GB
 ---
 
-<!--
-Above is the YAML (YAML Ain't Markup Language) header that includes a lot of
-metadata used to produce the document. Be careful with spacing in this header!
-
-If you'd like to include a comment that won't be produced in your resulting file
-enclose it in a block like this.
--->
-
-<!--
-If you receive a duplicate label error after knitting, make sure to delete the
-index.Rmd file and then knit again.
--->
-
-```{r include_packages, include = FALSE, eval = FALSE}
-# This chunk ensures that the huskydown package is
-# installed and loaded. This huskydown package includes
-# the template files for the thesis.
-if(!require(devtools)) {
-  install.packages("devtools", repos = "http://cran.rstudio.com")
-}
-if(!require(buckydown)) {
-  devtools::install_github("tjmahr/buckydown")
-}
-
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>")
 ```
 
-<!-- 
-The {.unnumbered} option here means that the introduction will be "Chapter 0."
-You can also use {-} for no numbers on chapters. 
--->
+# Introduction {.unnumbered}
+
 
 # Introduction {.unnumbered}
 
