@@ -178,6 +178,8 @@ folder.
   - To force capitalization in an article title or where all lowercase is
     generally used, bracket the capital letter in curly braces.
 
+This is a citation that produces a bibliography entry with a DOI that might go off the page: @Leach2007. I'm citing it to see if I can update the template to that problem.
+
 ## Anything else?
 
 If you'd like to see examples of other things in this template, please [contact
