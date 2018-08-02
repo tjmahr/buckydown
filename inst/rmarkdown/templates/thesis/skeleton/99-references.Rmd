@@ -12,6 +12,11 @@ delete "References" and replace it.
 -->
 
 # References {-}
+
+\interlinepenalty=10000
+\sloppy
+\sfcode`\.=1000\relax
+
 <!--
 This manually sets the header for this unnumbered chapter.
 -->
