@@ -249,29 +249,29 @@
 \makeoddhead{chapter}{}{}{\thepage}
 %%% SNIP
 
-%%% bib nonsense
-\makeatletter
-\newenvironment{wb-bib}[1]{%
-  \chapter*{references}
-\ifnobibintoc\else
-\phantomsection
-\addcontentsline{toc}{chapter}{References}
-\fi
-\prebibhook
-  \begin{bibitemlist}{#1}}{\end{bibitemlist}\postbibhook}
-
-\AtBeginDocument{%
-  \@ifpackageloaded{natbib}{% natbib is loaded
-    \addtodef{\endthebibliography}{}{\vskip-\lastskip\postbibhook}
-    \@ifpackagewith{natbib}{sectionbib}{% with sectionbib option
-      \renewcommand{\bibsection}{\@memb@bsec}}%
-      {\renewcommand{\bibsection}{\@memb@bchap}}}%
-  {}
-  \@ifpackagewith{chapterbib}{sectionbib}{%
-    \renewcommand{\sectionbib}[2]{}
-    \renewcommand{\bibsection}{\@memb@bsec}}{}
-}
-\makeatother
+% %%% bib nonsense
+% \makeatletter
+% \newenvironment{wb-bib}[1]{%
+%   \chapter*{references}
+% \ifnobibintoc\else
+% \phantomsection
+% \addcontentsline{toc}{chapter}{References}
+% \fi
+% \prebibhook
+%   \begin{bibitemlist}{#1}}{\end{bibitemlist}\postbibhook}
+%
+% \AtBeginDocument{%
+%   \@ifpackageloaded{natbib}{% natbib is loaded
+%     \addtodef{\endthebibliography}{}{\vskip-\lastskip\postbibhook}
+%     \@ifpackagewith{natbib}{sectionbib}{% with sectionbib option
+%       \renewcommand{\bibsection}{\@memb@bsec}}%
+%       {\renewcommand{\bibsection}{\@memb@bchap}}}%
+%   {}
+%   \@ifpackagewith{chapterbib}{sectionbib}{%
+%     \renewcommand{\sectionbib}[2]{}
+%     \renewcommand{\bibsection}{\@memb@bsec}}{}
+% }
+% \makeatother
 
 
 
@@ -321,10 +321,10 @@
 
 \makeatletter
 
-\newcounter {tocpage}
-\newcounter {lofpage}
-\newcounter {lotpage}
-\newcounter {listofheading}
+\newcounter{tocpage}
+\newcounter{lofpage}
+\newcounter{lotpage}
+\newcounter{listofheading}
 
 \newcommand\@thesistitlemedskip{0.25in}
 \newcommand\@thesistitlebigskip{0.55in}
@@ -350,10 +350,9 @@
 % \c@page\z@ -- deleted: count title page in thesis
 }{\if@restonecol\twocolumn \else \newpage \fi}
 
-\gdef\@degree{Doctor of Philosophy}    %Default is PhD
-\gdef\@doctype{A dissertation}         %Default is dissertation
-
-\gdef\@department{(Electrical Engineering)} % Default is Electical Engineering
+\gdef\@degree{Doctor of Philosophy}
+\gdef\@doctype{A dissertation}
+\gdef\@department{(Electrical Engineering)}
 \gdef\@oralexamdate{}
 \gdef\@committeeone{}
 \gdef\@committeetwo{}
@@ -592,15 +591,10 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
   \addcontentsline{toc}{chapter}{VITA}}
 \def\endvita{\par\newpage}
 
-%=============================================================================
 % ACKNOWLEDGMENTS
-%=============================================================================
-% The acknowledgments environment must do the following:
-% - start a new page with ACKNOWLEDGMENTS centered two inches from the top
-%=============================================================================
 \def\acks{
   \chapter*{Acknowledgments}
-}
+  \addcontentsline{toc}{chapter}{Acknowledgments}}
 \def\endacks{\par\newpage}
 
 %=============================================================================

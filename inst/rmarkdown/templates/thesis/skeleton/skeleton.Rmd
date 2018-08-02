@@ -29,8 +29,8 @@ acknowledgments: |
   "My acknowledgments"
 lof: true
 lot: true
-bibliography: assets/thesis.bib
 csl: assets/apa.csl
+bibliography: assets/thesis.bib
 ---
 
 ```{r, echo = FALSE}
