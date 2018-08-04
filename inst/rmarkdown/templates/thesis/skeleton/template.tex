@@ -74,6 +74,7 @@
 %% This is my infobox class
 \usepackage{xcolor}
 \usepackage{mdframed}
+% \mdfsetup{skipabove=5pt,skipbelow=0pt}
 \definecolor{infoblue}{RGB}{238, 247, 250}
 
 % Helpful demo of using mdframded
@@ -133,6 +134,7 @@
 \usepackage{fancyvrb}
 \DefineShortVerb[commandchars=\\\{\}]{\|}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+
 % Add ',fontsize=\small' for more characters per line
 \newenvironment{Shaded}
    {
@@ -142,6 +144,42 @@
    }{
    \end{spacing}
    }
+
+% https://github.com/nightsense/snow/blob/master/colors/snow.vim
+% \definecolor{gry0}{HTML}{f2f3f5}
+% \definecolor{gry1}{HTML}{dfe3ea}
+% \definecolor{gry2}{HTML}{768294}
+% \definecolor{gry3}{HTML}{525d6e}
+% \definecolor{gryc}{HTML}{303842}
+% \definecolor{srch}{HTML}{e8bc4a}
+% \definecolor{gryp}{HTML}{a0adc0}
+% \definecolor{sprd}{HTML}{ff0000}
+% \definecolor{spbl}{HTML}{0087ff}
+% \definecolor{spcy}{HTML}{008787}
+% \definecolor{spmg}{HTML}{d700d7}
+% \definecolor{red_}{HTML}{c34853}
+% \definecolor{gold}{HTML}{8e6e08}
+% \definecolor{gren}{HTML}{2a843c}
+% \definecolor{cyan}{HTML}{008895}
+% \definecolor{blue}{HTML}{0779c5}
+% \definecolor{mgnt}{HTML}{a158a8}
+%
+%
+% \newenvironment{Shaded}
+%    {
+%     \begin{spacing}{0.9}
+%      % \raggedright
+%      % \textbf{Example: }%
+%    }{
+%    \end{spacing}
+%    }
+% \surroundwithmdframed[
+%    hidealllines=true,
+%    backgroundcolor=gry0,
+%    innerbottommargin=-17pt,
+%    skipbelow=-20pt
+% ]{Shaded}
+
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
@@ -159,6 +197,37 @@
 \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
 \newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+
+
+
+% https://github.com/nightsense/snow
+% \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+%
+% \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+% \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+% \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+%
+% \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+% \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+%
+% \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+%
+% \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{{#1}}}
+% \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{{#1}}}
+%
+% \newcommand{\RegionMarkerTok}[1]{{#1}}
+%
+% % done
+% \newcommand{\NormalTok}[1]{\textcolor[rgb]{0.322,0.365,0.431}{{#1}}}
+%
+% \newcommand{\OtherTok}[1]{\textcolor{gren}{{#1}}}
+% \newcommand{\KeywordTok}[1]{\textcolor{gren}{{#1}}}
+% \newcommand{\OperatorTok}[1]{\textcolor{gren}{{#1}}}
+% \newcommand{\BuiltInTok}[1]{\textcolor{gren}{{#1}}}
+% \newcommand{\ControlFlowTok}[1]{\textcolor{gren}{{#1}}}
+%
+%
+% \newcommand{\CommentTok}[1]{\textcolor{gry2}{\textit{{#1}}}}
 
 
 
