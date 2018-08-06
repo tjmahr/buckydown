@@ -98,7 +98,7 @@ and Science] if you uncomment the code in [Math].
 You can also embed plots. For example, here is a way to use the base **R**
 graphics package to produce a plot using the built-in `pressure` dataset:
 
-```{r pressure, echo=FALSE, cache=TRUE}
+```{r pressure, echo=FALSE, cache=TRUE, out.width="100%"}
 plot(pressure)
 ```
 
@@ -230,6 +230,8 @@ flights %>%
     geom_point()
 ```
 
+
+
 ## Additional resources
 
   - *Markdown* Cheatsheet -
@@ -242,3 +244,82 @@ flights %>%
     <https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html>
 
   - `ggplot2` Documentation - <http://docs.ggplot2.org/current/>
+
+
+
+# Test of output printing
+
+```{r model}
+m <- lm(
+  mpg ~ 1 + cyl + disp + hp + drat + cyl:disp + disp:hp + hp:drat + 
+    cyl:disp:drat + disp:hp:drat,
+  mtcars)
+m
+```
+
+Same chunk but with `R.options = list(width = 50)`.
+
+```{r, R.options = list(width = 50), ref.label = "model"}
+```
+
+Dataframe respects the width but the not the formula line.
+
+Here we try to define an output hook...
+
+```{r, eval = FALSE, echo = FALSE}
+x <- "#> 
+#> Call:
+#> lm(formula = mpg ~ 1 + cyl + disp + hp + drat + cyl:disp + disp:hp + 
+#>     hp:drat + cyl:disp:drat + disp:hp:drat, data = mtcars)
+#> 
+#> Coefficients:
+#>   (Intercept)            cyl           disp             hp           drat  
+#>    35.5340886     -3.4445941     -0.1404943      0.2641019      4.4596647  
+#>      cyl:disp        disp:hp        hp:drat  cyl:disp:drat   disp:hp:drat  
+#>     0.0207660     -0.0008426     -0.0842427     -0.0012417      0.0002482"
+options <- list()
+options$linewidth <- 50
+options$comment <- "#>"
+```
+
+
+```{r wrap-hook}
+library(knitr)
+hook_output = knit_hooks$get('output')
+knit_hooks$set(output = function(x, options) {
+  # this hook is used only when the linewidth option is not NULL
+  if (!is.null(n <- options$linewidth)) {
+    x = knitr:::split_lines(x)
+    # any lines wider than n should be wrapped
+    if (any(nchar(x) > n)) { 
+      # strwrap strips off leading whitespace which ruins
+      # print out of dataframes, so we need to wrap
+      # only lines that break limit
+      strwrap_if <- function(line, limit, ...) {
+          if (nchar(line) > limit) {
+            strwrap(line, ...)
+          } else {
+            line
+          }
+      }
+      x <- lapply(
+        x, 
+        strwrap_if, 
+        limit = n,
+        width = n, 
+        prefix = paste0(options$comment, " "), 
+        initial = "")
+      x <- unlist(x)
+    }
+    
+    x = paste(x, collapse = '\n')
+  }
+  hook_output(x, options)
+})
+```
+
+
+Same chunk but with `linewidth = 55` and `R.options = list(width = 50)`.
+
+```{r, linewidth = 55, ref.label = "model", R.options = list(width = 50)}
+```
