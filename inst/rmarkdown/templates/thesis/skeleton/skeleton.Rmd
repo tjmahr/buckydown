@@ -26,7 +26,7 @@ abstract: '`r readLines("abstract.md")`'
 dedication: |
   For my cats  
 acknowledgments: |
-  "My acknowledgments"
+  My acknowledgments
 lof: true
 lot: true
 csl: assets/apa.csl
@@ -66,6 +66,9 @@ If you're still on the fence about using *R Markdown*, check out the resource
 for newbies available at <https://ismayc.github.io/rbasics-book/> .  
 -->
 
+This next section tests my infobox class.
+
+\Begin{infobox}
 **Why use it?**
 
 *R Markdown* creates a simple and straightforward way to interface with the
@@ -91,3 +94,7 @@ the user-friendly nature of *Markdown* and its ability to keep track of and
 easily include figures, automatically generate a table of contents, index,
 references, table of figures, etc. should make it of great benefit to nearly
 anyone writing a thesis project.
+
+\End{infobox}
+
+This ends the test. This font should be larger.
