@@ -28,7 +28,9 @@ dedication: |
 acknowledgments: |
   My acknowledgments
 lof: true
+lof-title: List of figures
 lot: true
+lot-title: List of tables
 csl: assets/apa.csl
 bibliography: assets/thesis.bib
 ---

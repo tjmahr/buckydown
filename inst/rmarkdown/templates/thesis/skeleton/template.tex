@@ -432,6 +432,8 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
 \def\umiabstract{
              % \thispagestyle{empty}
                   % \addtocounter{page}{-1}
+  \addcontentsline{toc}{chapter}{Abstract}
+  % \relax\markboth{Abstract}{Abstract}}
   \begin{center}
     {\textbf{\expandafter\uppercase\expandafter{Abstract}}}\\
     \vspace{6pt}
@@ -481,13 +483,11 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
   \newpage}
 
 
-%=============================================================================
+
 % COPYRIGHTPAGE
-%=============================================================================
 % The copyright must do the following:
 % - start a new page with no number
 % - place the copyright text centered at the bottom.
-%=============================================================================
 \def\copyrightpage{
   \newpage
   \thispagestyle{empty}    % No page number
@@ -497,83 +497,70 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
    \vfill
    \copyright\ Copyright by \@author\ \@date\\
    All Rights Reserved
-  \end{center}}
+  \end{center}
+  \par\newpage}
 
 
-%=============================================================================
+
+
 % GLOSSARY
-%=============================================================================
 % The glossary environment must do the following:
 % - produce the table of contents entry for the glossary
 % - start a new page with GLOSSARY centered two inches from the top
-%=============================================================================
 \def\glossary{
   \chapter*{GLOSSARY}
   \addcontentsline{toc}{chapter}{Glossary}}
 \def\endglossary{\par\newpage}
 
-%=============================================================================
+
 % NOMENCLATURE
-%=============================================================================
 % The nomenclature environment must do the following:
 % - produce the table of contents entry for the nomenclature section
 % - start a new page with NOMENCLATURE centered two inches from the top
-%=============================================================================
 \def\nomenclature{\separatorpage{DISCARD THIS PAGE}
   \chapter*{Nomenclature}
   \addcontentsline{toc}{chapter}{NOMENCLATURE}}
 \def\endnomenclature{\par\newpage}
 
-%=============================================================================
 % CONVENTIONS
-%=============================================================================
 % The conventions environment must do the following:
 % - produce the table of contents entry for the nomenclature section
 % - start a new page with CONVENTIONS centered two inches from the top
-%=============================================================================
 \def\conventions{\separatorpage{DISCARD THIS PAGE}
   \chapter*{Conventions}
   \addcontentsline{toc}{chapter}{CONVENTIONS}}
 \def\endconventions{\par\newpage}
 
 
-%=============================================================================
 % COLOPHON
-%=============================================================================
 % The colophon environment must do the following:
 % - produce the table of contents entry for the nomenclature section
 % - start a new page with COLOPHON centered two inches from the top
-%=============================================================================
 \def\colophon{
   \chapter*{Colophon}
   \addcontentsline{toc}{chapter}{Colophon}}
 \def\endcolophon{\par\newpage}
 
-%=============================================================================
 % LIST OF SYMBOLS
-%=============================================================================
 % The list of symbols environment must do the following:
 % - produce the table of contents entry for the list of symbols section
 % - start a new page with LIST OF SYMBOLS centered two inches from the top
-%=============================================================================
 \def\listofsymbols{
   \eject
   \chapter*{LIST OF SYMBOLS}
   \addcontentsline{toc}{chapter}{LIST OF SYMBOLS}}
 \def\endlistofsymbols{\par\newpage}
 
-%=============================================================================
 % VITA
-%=============================================================================
 % The vita environment must do the following:
 % - produce a separator page with the word vita centered
 % - produce the table of contents entry for the vita
 % - start a new page with VITA centered two inches from the top
-%=============================================================================
 \def\vita{
   \chapter*{VITA}
   \addcontentsline{toc}{chapter}{VITA}}
 \def\endvita{\par\newpage}
+
 
 % ACKNOWLEDGMENTS
 \def\acks{
@@ -581,14 +568,11 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
   \addcontentsline{toc}{chapter}{Acknowledgments}}
 \def\endacks{\par\newpage}
 
-%=============================================================================
 % DEDICATION
-%=============================================================================
 % The dedication environment must do the following:
 % - start a new page
 % - center the text vertically
 % - include the text in a center environment
-%=============================================================================
 \def\dedication{
   \newpage
   \null\vfil
@@ -725,11 +709,12 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
 \maketitle
 \restoregeometry %sets the margins back to normal
 
+\copyrightpage
+
 \begin{umiabstract}
   $abstract$
 \end{umiabstract}
 
-\copyrightpage
 
 \begin{dedication}
 	\emph{$dedication$}
@@ -773,15 +758,35 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
 \renewcommand{\cftsectionleader}{}
 \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
 \renewcommand{\cftsectionafterpnum}{\cftparfillskip}
+
+% Sets width of page number in table of contents so that
+% 3-digit page numbers don't touch the section title
 \setpnumwidth{2em}
 
+% Sets spacing for list of figures/tables
+% so that e.g. "12.10" doesn't touch the caption.
+%
+% \cftsetindents{<kind>}{indent}{numwidth}.
+\cftsetindents{figure}{0em}{2.5em}
+\cftsetindents{table}{0em}{2.5em}
 
-% \captionnamefont{\small\sffamily}
-% \captiontitlefont{\small\sffamily}
+$if(contents-title)$
+  \renewcommand{\contentsname}{$contents-title$}
+$else$
+  \renewcommand{\contentsname}{Contents}
+$endif$
 
-% \renewcommand{\contentsname}{contents}
-% \renewcommand{\listfigurename}{list of figures}
-% \renewcommand{\listtablename}{list of tables}
+$if(lof-title)$
+  \renewcommand{\listfigurename}{$lof-title$}
+$else$
+  \renewcommand{\listfigurename}{List of Figures}
+$endif$
+
+$if(lot-title)$
+  \renewcommand{\listtablename}{$lot-title$}
+$else$
+  \renewcommand{\listtablename}{List of Tables}
+$endif$
 
 \tableofcontents
 
