@@ -1,4 +1,5 @@
 \documentclass[12pt,oneside,letterpaper]{memoir}
+\usepackage[american]{babel}
 
 \usepackage{natbib}
 
@@ -92,8 +93,8 @@
   \usepackage{fontspec,xltxtra,xunicode}
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newfontfamily\unicodefont{Junicode}
-  \usepackage{polyglossia}
-  \setdefaultlanguage[variant=american]{english}
+  % \usepackage{polyglossia}
+  % \setdefaultlanguage[variant=american]{english}
 \else
   \ifluatex
     \usepackage{fontspec}
@@ -182,57 +183,6 @@
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 
-% \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
-% \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
-% \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-% \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-% \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-% \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-% \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-% \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
-% \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
-% \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
-% \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
-% \newcommand{\RegionMarkerTok}[1]{{#1}}
-% \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
-% \newcommand{\NormalTok}[1]{{#1}}
-% \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
-% \newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
-% \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
-%
-
-
-% https://github.com/nightsense/snow
-% \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
-%
-% \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-% \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-% \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-%
-% \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-% \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-%
-% \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
-%
-% \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{{#1}}}
-% \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{{#1}}}
-%
-% \newcommand{\RegionMarkerTok}[1]{{#1}}
-%
-% % done
-% \newcommand{\NormalTok}[1]{\textcolor[rgb]{0.322,0.365,0.431}{{#1}}}
-%
-% \newcommand{\OtherTok}[1]{\textcolor{gren}{{#1}}}
-% \newcommand{\KeywordTok}[1]{\textcolor{gren}{{#1}}}
-% \newcommand{\OperatorTok}[1]{\textcolor{gren}{{#1}}}
-% \newcommand{\BuiltInTok}[1]{\textcolor{gren}{{#1}}}
-% \newcommand{\ControlFlowTok}[1]{\textcolor{gren}{{#1}}}
-%
-%
-% \newcommand{\CommentTok}[1]{\textcolor{gry2}{\textit{{#1}}}}
-
-
-
 
 
 
@@ -284,19 +234,6 @@
     \hrulefill \par\nobreak\noindent \vskip\afterchapskip}
 }
 
-% \makechapterstyle{deposit}{%
-%   \renewcommand{\chapterheadstart}{}
-%   \renewcommand{\printchaptername}{}
-%   \renewcommand{\chapternamenum}{}
-%   \renewcommand{\printchapternum}{
-%     \parbox{2em}{\MakeLowercase{\Huge\scshape\thechapter{}}}
-%   }
-%   \renewcommand{\afterchapternum}{}
-%   \renewcommand{\printchaptertitle}[1]{%
-%   \raggedright\MakeLowercase{\Huge\scshape##1}}
-%   \renewcommand{\afterchaptertitle}{%
-%   % \vskip\onelineskip \hrule\vskip\onelineskip}
-% }
 
 \makepagestyle{deposit}
 
@@ -324,33 +261,6 @@
 \makeevenhead{part}{\thepage}{}{}
 \makeoddhead{part}{}{}{\thepage}
 %%% SNIP
-
-% %%% bib nonsense
-% \makeatletter
-% \newenvironment{wb-bib}[1]{%
-%   \chapter*{references}
-% \ifnobibintoc\else
-% \phantomsection
-% \addcontentsline{toc}{chapter}{References}
-% \fi
-% \prebibhook
-%   \begin{bibitemlist}{#1}}{\end{bibitemlist}\postbibhook}
-%
-% \AtBeginDocument{%
-%   \@ifpackageloaded{natbib}{% natbib is loaded
-%     \addtodef{\endthebibliography}{}{\vskip-\lastskip\postbibhook}
-%     \@ifpackagewith{natbib}{sectionbib}{% with sectionbib option
-%       \renewcommand{\bibsection}{\@memb@bsec}}%
-%       {\renewcommand{\bibsection}{\@memb@bchap}}}%
-%   {}
-%   \@ifpackagewith{chapterbib}{sectionbib}{%
-%     \renewcommand{\sectionbib}[2]{}
-%     \renewcommand{\bibsection}{\@memb@bsec}}{}
-% }
-% \makeatother
-
-
-
 
 
 % \input{includes/defs}
@@ -718,75 +628,6 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
 
-%=============================================================================
-% TABLE OF CONTENTS; LIST OF FIGURES; LIST OF TABLES
-%=============================================================================
-% In report style, \tableofcontents, \listoffigures, etc. are always
-% set in single-column style.  @restonecol is used to keep track of
-% whether we need to switch back to double column style after the toc.
-%
-% The only known problem now is that the first page with the new
-% layout is too long.  The problem seems to be that the change to
-% textheight doesn't take place on the first page.  Even if it's the
-% first line in the table of contents macro.  Presumably the same
-% problem also occurs in the lof and lot.
-%
-% I'm taking a shot at fixing the problem by dropping in a throw-away
-% page between the change to the height parameters and the start of
-% the chapter.  Isn't elegance wonderful?
-%
-%=============================================================================
-
-% \def\@tableof#1#2#3#4#5{
-% { % limit scope of following declarations!!
-%   \@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn\fi
-%   \addtolength{\textheight}{-40pt}       % -24-16
-%   \addtolength{\majorheadskip}{-40pt}    % -24-16
-%   \addtolength{\headheight}{52pt}        %  36+16
-%   \addtolength{\headsep}{-12pt}          % -12
-%   \separatorpage{DISCARD THIS PAGE}
-%   \chapter*{#1}
-%   #5
-%   \relax\markboth{#1}{#1}
-%   \hbox to \hsize{#2 \hfil Page}
-%   \singlespace
-%   \setcounter{#3}{0}
-%   \setcounter{listofheading}{1}  % change from 0 to 1 by mccauley, 14may93
-%   \def\@oddhead{\vbox to \headheight{\vspace{4pt}
-%     \hbox to \hsize{\hfil\textrm{\thepage}} \vfil
-%     \ifnum\value{#3}=1
-%       \ifnum\value{listofheading}=2
-%         \hbox to \hsize{Appendix\hfil} \vspace{4pt} \fi
-%       \ifnum\value{listofheading}=1
-%         \stepcounter{listofheading} \fi
-%       \hbox to \hsize{#2 \hfil Page}
-%     \else
-%       \setcounter{#3}{1}
-%     \fi}}
-%   \def\@evenhead{\vbox to \headheight{\vspace{4pt}
-%     \hbox to \hsize{\textrm{\thepage}\hfil} \vfil
-%     \ifnum\value{#3}=1
-%       \ifnum\value{listofheading}=2
-%         \hbox to \hsize{Appendix\hfil} \vspace{4pt} \fi
-%       \ifnum\value{listofheading}=1
-%         \stepcounter{listofheading} \fi
-%       \hbox to \hsize{#2 \hfil Page}
-%     \else
-%       \setcounter{#3}{1}
-%     \fi}}
-%   \@starttoc{#4}  \if@restonecol\twocolumn\fi
-%   \newpage
-% }}
-%
-% \def\tableofcontents{\@tableof{TABLE OF CONTENTS}{}{tocpage}{toc}{}}
-%
-% \def\listoffigures{
-%   \@tableof{LIST OF FIGURES}{Figure}{lofpage}{lof}
-%   {\protect\addcontentsline{toc}{chapter}{LIST OF FIGURES}}}
-%
-% \def\listoftables{
-%   \@tableof{LIST OF TABLES}{Table}{lotpage}{lot}
-%   {\protect\addcontentsline{toc}{chapter}{LIST OF TABLES}}}
 
 %=============================================================================
 % BIBLIOGRAPHY
@@ -925,13 +766,15 @@ $for(signature)$\indent $signature$$sep$\\*$endfor$
 \renewcommand{\afterlottitle}{}
 
 \renewcommand{\cftchapterfont}{\normalfont}
-\renewcommand{\cftsectionfont}{\itshape}
+\renewcommand{\cftsectionfont}{\normalfont}
 \renewcommand{\cftchapterpagefont}{\normalfont}
 \renewcommand{\cftchapterpresnum}{\bfseries}
 \renewcommand{\cftchapterleader}{}
 \renewcommand{\cftsectionleader}{}
 \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
 \renewcommand{\cftsectionafterpnum}{\cftparfillskip}
+\setpnumwidth{2em}
+
 
 % \captionnamefont{\small\sffamily}
 % \captiontitlefont{\small\sffamily}
