@@ -33,6 +33,7 @@ lot: true
 lot-title: List of tables
 csl: assets/apa.csl
 bibliography: assets/thesis.bib
+geometry: "left=1.275in,right=1.275in,top=1.275in,bottom=1.275in"
 ---
 
 ```{r, echo = FALSE}
